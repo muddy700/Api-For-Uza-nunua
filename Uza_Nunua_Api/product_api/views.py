@@ -1,6 +1,8 @@
-from .serializers import LocationSerializer, ProfileSerializer, CategoriesSerializer, UserSerializer
+from .serializers import (LocationSerializer, ProfileSerializer, 
+CategoriesSerializer, UserSerializer, ProductSerializer,
+ ProductImageSerializer)
 from django.contrib.auth.models import User
-from .models import Location, Categories, Profile
+from .models import Location, Categories, Profile, Product, ProductImage
 from rest_framework import permissions
 from django.shortcuts import render
 from rest_framework import viewsets
@@ -27,4 +29,15 @@ class UserViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all().order_by('id')
     serializer_class = ProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all().order_by('id')
+    serializer_class = ProductSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ProductImageViewSet(viewsets.ModelViewSet):
+    queryset = ProductImage.objects.all().order_by('id')
+    serializer_class = ProductImageSerializer
     permission_classes = [permissions.IsAuthenticated]
