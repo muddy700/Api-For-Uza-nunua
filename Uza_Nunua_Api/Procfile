@@ -1,0 +1,1 @@
+web: gunicorn Uza_Nunua_Api.wsgi

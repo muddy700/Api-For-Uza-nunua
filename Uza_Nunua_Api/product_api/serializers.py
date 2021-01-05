@@ -17,7 +17,7 @@ class CategoriesSerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email']
+        fields = ['url', 'username', 'email',  'password']
 
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
